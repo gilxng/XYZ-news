@@ -70,7 +70,7 @@ export class NewsComponent implements OnInit, OnDestroy {
       },
       {
         url: 'https://www.youtube.com/watch?v=CevxZvSJLk8',
-        title: 'Ed Sheeran - Shape of You [Official Video]',
+        title: 'Katy Perry - Roar',
         id: 3,
       },
     ];
@@ -123,13 +123,13 @@ export class NewsComponent implements OnInit, OnDestroy {
     if (event.data == 1) {
       FullStory.event('Video Started', {
         videoTitle: event.target.getVideoData().title,
-        path: window.location.pathname,
+        path: `/news/${this.id}`,
         pageTitle: window.document.title,
         playTime: Math.ceil(event.target.getCurrentTime()),
       });
       console.log('Video Started', {
         videoTitle: event.target.getVideoData().title,
-        path: window.location.pathname,
+        path: `/news/${this.id}`,
         pageTitle: window.document.title,
         playTime: Math.ceil(event.target.getCurrentTime()),
       });
@@ -138,13 +138,13 @@ export class NewsComponent implements OnInit, OnDestroy {
     if(event.data === 0) {
       FullStory.event('Video Watched', {
         videoTitle: event.target.getVideoData().title,
-        path: window.location.pathname,
+        path: `/news/${this.id}`,
         pageTitle: window.document.title,
         playTime: Math.ceil(event.target.getCurrentTime()),
       });
       console.log('Video Watched', {
         videoTitle: event.target.getVideoData().title,
-        path: window.location.pathname,
+        path: `/news/${this.id}`,
         pageTitle: window.document.title,
         playTime: Math.ceil(event.target.getCurrentTime()),
       });
