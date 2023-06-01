@@ -92,6 +92,7 @@ export class NewsComponent implements OnInit, OnDestroy {
           onStateChange: this.onPlayerStateChange,
         },
       });
+      console.log(this.player);
       clearInterval(this.interval);
     }, 1000);
   }
