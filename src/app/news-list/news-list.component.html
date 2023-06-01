@@ -1,0 +1,6 @@
+<h1>News List</h1>
+<ul>
+  <li *ngFor="let newsItem of news">
+    <a [routerLink]="['/news', newsItem.id]">{{ newsItem.title }}</a>
+  </li>
+</ul>
