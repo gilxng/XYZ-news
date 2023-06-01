@@ -53,7 +53,7 @@ export class NewsComponent implements OnInit, OnDestroy {
     this.embed = this.sanitizer.bypassSecurityTrustResourceUrl(
       `https://www.youtube.com/embed/${this.newsItem.url
         .split('v=')
-        .pop()!}?enablejsapi=1&origin=http://localhost:4200`
+        .pop()!}?enablejsapi=1&origin=${window.location.origin}`
     );
     this.titleService.setTitle(this.newsItem.title + ' | XYZ News');
     this.reframed = false;
