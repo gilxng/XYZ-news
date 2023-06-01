@@ -102,13 +102,13 @@ export class NewsComponent implements OnInit, OnDestroy {
     if (!this.player) return;
     FullStory.event('Content Video Stopped', {
       videoTitle: this.newsItem.title,
-      path: `/news/${this.id}`,
+      path: window.location.pathname,
       pageTitle: window.document.title,
       playTime: Math.ceil(this.player.getCurrentTime()),
     });
     console.log('Content Video Stopped', {
       videoTitle: this.newsItem.title,
-      path: `/news/${this.id}`,
+      path: window.location.pathname,
       pageTitle: window.document.title,
       playTime: Math.ceil(this.player.getCurrentTime()),
     });
@@ -123,28 +123,28 @@ export class NewsComponent implements OnInit, OnDestroy {
     if (event.data == 1) {
       FullStory.event('Content Video Started', {
         videoTitle: event.target.getVideoData().title,
-        path: `/news/${this.id}`,
+        path: window.location.pathname,
         pageTitle: window.document.title,
         playTime: Math.floor(event.target.getCurrentTime()),
       });
       console.log('Content Video Started', {
         videoTitle: event.target.getVideoData().title,
-        path: `/news/${this.id}`,
+        path: window.location.pathname,
         pageTitle: window.document.title,
         playTime: Math.floor(event.target.getCurrentTime()),
       });
     }
 
-    if(event.data === 0) {
+    if (event.data === 0) {
       FullStory.event('Content Video Watched', {
         videoTitle: event.target.getVideoData().title,
-        path: `/news/${this.id}`,
+        path: window.location.pathname,
         pageTitle: window.document.title,
         playTime: Math.ceil(event.target.getCurrentTime()),
       });
       console.log('Content Video Watched', {
         videoTitle: event.target.getVideoData().title,
-        path: `/news/${this.id}`,
+        path: window.location.pathname,
         pageTitle: window.document.title,
         playTime: Math.ceil(event.target.getCurrentTime()),
       });
