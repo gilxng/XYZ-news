@@ -100,13 +100,13 @@ export class NewsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     clearInterval(this.interval);
     if (!this.player) return;
-    FullStory.event('Video Stopped', {
+    FullStory.event('Content Video Stopped', {
       videoTitle: this.newsItem.title,
       path: `/news/${this.id}`,
       pageTitle: window.document.title,
       playTime: Math.ceil(this.player.getCurrentTime()),
     });
-    console.log('Video Stopped', {
+    console.log('Content Video Stopped', {
       videoTitle: this.newsItem.title,
       path: `/news/${this.id}`,
       pageTitle: window.document.title,
@@ -121,28 +121,28 @@ export class NewsComponent implements OnInit, OnDestroy {
 
   onPlayerStateChange(event: any) {
     if (event.data == 1) {
-      FullStory.event('Video Started', {
+      FullStory.event('Content Video Started', {
         videoTitle: event.target.getVideoData().title,
         path: `/news/${this.id}`,
         pageTitle: window.document.title,
-        playTime: Math.ceil(event.target.getCurrentTime()),
+        playTime: Math.floor(event.target.getCurrentTime()),
       });
-      console.log('Video Started', {
+      console.log('Content Video Started', {
         videoTitle: event.target.getVideoData().title,
         path: `/news/${this.id}`,
         pageTitle: window.document.title,
-        playTime: Math.ceil(event.target.getCurrentTime()),
+        playTime: Math.floor(event.target.getCurrentTime()),
       });
     }
 
     if(event.data === 0) {
-      FullStory.event('Video Watched', {
+      FullStory.event('Content Video Watched', {
         videoTitle: event.target.getVideoData().title,
         path: `/news/${this.id}`,
         pageTitle: window.document.title,
         playTime: Math.ceil(event.target.getCurrentTime()),
       });
-      console.log('Video Watched', {
+      console.log('Content Video Watched', {
         videoTitle: event.target.getVideoData().title,
         path: `/news/${this.id}`,
         pageTitle: window.document.title,
