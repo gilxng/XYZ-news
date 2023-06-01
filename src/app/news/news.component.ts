@@ -62,6 +62,8 @@ export class NewsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.interval = setInterval(() => {
       // @ts-ignore
+      console.log(window['YT'])
+      // @ts-ignore
       if (!window['YT']) return;
       this.reframed = false;
       // @ts-ignore
@@ -110,6 +112,21 @@ export class NewsComponent implements OnInit, OnDestroy {
         playTime: Math.ceil(event.target.getCurrentTime()),
       });
       console.log('Video Started', {
+        videoTitle: event.target.getVideoData().title,
+        path: window.location.pathname,
+        pageTitle: window.document.title,
+        playTime: Math.ceil(event.target.getCurrentTime()),
+      });
+    }
+
+    if(event.data === 0) {
+      FullStory.event('Video Watched', {
+        videoTitle: event.target.getVideoData().title,
+        path: window.location.pathname,
+        pageTitle: window.document.title,
+        playTime: Math.ceil(event.target.getCurrentTime()),
+      });
+      console.log('Video Watched', {
         videoTitle: event.target.getVideoData().title,
         path: window.location.pathname,
         pageTitle: window.document.title,
