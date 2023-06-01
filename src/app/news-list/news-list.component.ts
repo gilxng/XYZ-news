@@ -19,7 +19,7 @@ export class NewsListComponent {
     },
     {
       url: 'https://www.youtube.com/watch?v=CevxZvSJLk8',
-      title: 'Ed Sheeran - Shape of You [Official Video]',
+      title: 'Katy Perry - Roar',
       id: 3,
     },
   ];
