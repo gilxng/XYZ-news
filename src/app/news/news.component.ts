@@ -57,12 +57,27 @@ export class NewsComponent implements OnInit, OnDestroy {
     );
     this.titleService.setTitle(this.newsItem.title + ' | XYZ News');
     this.reframed = false;
+    this.news = [
+      {
+        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        title: 'Rick Astley - Never Gonna Give You Up (Official Music Video)',
+        id: 1,
+      },
+      {
+        url: 'https://www.youtube.com/watch?v=9bZkp7q19f0',
+        title: 'PSY - GANGNAM STYLE(강남스타일) M/V',
+        id: 2,
+      },
+      {
+        url: 'https://www.youtube.com/watch?v=CevxZvSJLk8',
+        title: 'Ed Sheeran - Shape of You [Official Video]',
+        id: 3,
+      },
+    ];
   }
 
   ngOnInit() {
     this.interval = setInterval(() => {
-      // @ts-ignore
-      console.log(window['YT'])
       // @ts-ignore
       if (!window['YT']) return;
       this.reframed = false;
@@ -77,8 +92,6 @@ export class NewsComponent implements OnInit, OnDestroy {
           onStateChange: this.onPlayerStateChange,
         },
       });
-      console.log(this.player);
-      console.log(this)
       clearInterval(this.interval);
     }, 1000);
   }
