@@ -81,8 +81,14 @@ export class NewsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     clearInterval(this.interval);
-    if (this.player.getCurrentTime() === 0) return;
+    if (!this.player) return;
     FullStory.event('Video Stopped', {
+      videoTitle: this.newsItem.title,
+      path: `/news/${this.id}`,
+      pageTitle: window.document.title,
+      playTime: Math.ceil(this.player.getCurrentTime()),
+    });
+    console.log('Video Stopped', {
       videoTitle: this.newsItem.title,
       path: `/news/${this.id}`,
       pageTitle: window.document.title,
@@ -98,6 +104,12 @@ export class NewsComponent implements OnInit, OnDestroy {
   onPlayerStateChange(event: any) {
     if (event.data == 1) {
       FullStory.event('Video Started', {
+        videoTitle: event.target.getVideoData().title,
+        path: window.location.pathname,
+        pageTitle: window.document.title,
+        playTime: Math.ceil(event.target.getCurrentTime()),
+      });
+      console.log('Video Started', {
         videoTitle: event.target.getVideoData().title,
         path: window.location.pathname,
         pageTitle: window.document.title,
